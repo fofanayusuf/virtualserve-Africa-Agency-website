@@ -417,6 +417,7 @@
 
 
 
+
 /* =========================
    Navbar General
 ========================= */
@@ -426,13 +427,12 @@ header {
   top: 0;
   left: 0;
   z-index: 1000;
-  background: transparent; /* keep header image visible */
   transition: all 0.3s ease;
 }
 
 body {
   margin: 0;
-  padding-top: 70px; /* height of navbar */
+  padding-top: 70px; /* Height of navbar */
 }
 
 .container.nav {
@@ -442,12 +442,13 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
+  transition: all 0.3s ease;
 }
 
 .logo {
   font-weight: 700;
   font-size: 1.5rem;
-  color: #fff; /* white to show on header image */
+  color: #007bff;
 }
 
 /* Nav Links */
@@ -459,77 +460,107 @@ nav {
 
 nav a {
   text-decoration: none;
-  color: #fff;
+  color: #333;
   font-weight: 500;
   position: relative;
   transition: color 0.3s;
 }
 
-nav a.btn {
-  padding: 0.5rem 1rem;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 5px;
+nav a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #007bff;
+  transition: width 0.3s;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+}
+
+nav a:hover::after {
+  width: 100%;
 }
 
 nav a:hover {
   color: #007bff;
 }
 
-/* Scroll shrink */
-header.scrolled {
-  background-color: rgba(0,0,0,0.5); /* slightly dark overlay when scrolling */
-  padding: 0.5rem 2rem;
+nav a.btn {
+  padding: 0.5rem 1.2rem;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-/* Hamburger */
+nav a.btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   Scroll Shrink Effect
+========================= */
+header.scrolled {
+  padding: 0.5rem 2rem;
+  background-color: #ffffffcc;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   Hamburger Menu
+========================= */
 .hamburger {
   display: none;
   flex-direction: column;
   cursor: pointer;
   gap: 5px;
-  z-index: 1101;
+  z-index: 1101; /* Always on top of header image */
   position: relative;
 }
 
 .hamburger span {
   height: 3px;
   width: 25px;
-  background-color: #fff;
+  background-color: #333;
   border-radius: 2px;
   transition: all 0.3s ease;
 }
 
 /* =========================
-   Mobile Menu
+   Mobile Responsive
 ========================= */
 @media (max-width: 768px) {
   nav {
-    position: absolute; /* on top of header */
-    top: 70px; /* just below navbar */
-    right: -300px; /* start off-screen */
-    height: 60px; /* menu only as tall as needed */
-    width: 300px; /* menu width */
-    background: rgba(0,0,0,0.8); /* semi-transparent overlay */
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    position: fixed;
+    top: 0;  /* Start from top of page */
+    left: 0;
+    width: 100%; /* Full width overlay */
+    height: 100vh; /* Full screen */
+    background: rgba(0, 0, 0, 0.95); /* Dark overlay */
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    transition: right 0.3s ease;
-    border-radius: 5px;
+    gap: 2rem;
+    display: none;
+    z-index: 1100;
   }
 
   nav.active {
-    right: 0; /* slide in from right */
+    display: flex;
   }
 
   nav a {
     color: #fff;
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 
   nav a.btn {
-    padding: 0.4rem 1rem;
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
   }
 
   .hamburger {
