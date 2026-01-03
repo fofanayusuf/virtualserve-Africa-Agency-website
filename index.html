@@ -95,19 +95,19 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // === Smooth scroll for anchors ===
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) { // check if target exists
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
-
-  // === Scroll shrink effect ===
+  const hamburger = document.querySelector('.hamburger');
+  const nav = document.querySelector('nav');
   const header = document.querySelector('header');
+
+  // Hamburger toggle
+  if (hamburger && nav) {
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    });
+  }
+
+  // Scroll shrink
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
       header.classList.add('scrolled');
@@ -116,18 +116,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // === Hamburger toggle ===
-  const hamburger = document.querySelector('.hamburger');
-  const nav = document.querySelector('nav');
-
-  if (hamburger && nav) { // check if elements exist
-    hamburger.addEventListener('click', () => {
-      nav.classList.toggle('active');
-      hamburger.classList.toggle('active'); // Animate hamburger to X
+  // Smooth scroll for anchors
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
     });
-  }
+  });
 });
 </script>
+
 
 </body>
 
