@@ -417,7 +417,7 @@
 
 
 /* =========================
-   General Navbar Styles
+   Navbar General
 ========================= */
 header {
   width: 100%;
@@ -449,6 +449,7 @@ body {
   color: #007bff;
 }
 
+/* Nav Links */
 nav {
   display: flex;
   gap: 1.5rem;
@@ -530,32 +531,29 @@ header.scrolled {
 @media (max-width: 768px) {
   nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh; /* Full height overlay */
-    width: 100%;
-    background: rgba(0, 0, 0, 0.9); /* Dark transparent overlay */
+    top: 70px; /* Below navbar */
+    right: -300px; /* Start off-screen */
+    width: 250px; /* Menu width */
+    background: rgba(255, 255, 255, 0.95);
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    display: none;
-    z-index: 1050;
+    padding: 2rem 1rem;
+    gap: 1.5rem;
+    height: auto; /* Only as tall as links */
+    box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+    transition: right 0.3s ease; /* Smooth slide */
   }
 
   nav.active {
-    display: flex;
+    right: 0; /* Slide in from right */
   }
 
   nav a {
-    color: white;
-    font-size: 1.5rem;
+    color: #333;
+    font-size: 1.2rem;
   }
 
   nav a.btn {
-    background-color: #007bff;
-    color: white;
-    padding: 0.8rem 2rem;
+    padding: 0.5rem 1.5rem;
   }
 
   .hamburger {
