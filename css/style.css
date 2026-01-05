@@ -313,16 +313,17 @@ h1{text-align:center;font-size:2.4rem;margin-bottom:12px}
       text-decoration: none;
     }
 
-    
     .hero {
   position: relative;
   padding: 120px 0;
-  background: url("/assets/Images/va.png") center/cover no-repeat;
+  background: url("/assets/Images/va.png") no-repeat;
+  background-size: cover;
+  background-position: center top 140px;
   overflow: hidden;
-
-  /* subtle professional motion */
   animation: heroZoom 20s ease-in-out infinite alternate;
 }
+
+
 
 /* Dark overlay for readability */
 .hero-overlay {
@@ -510,9 +511,8 @@ h1{text-align:center;font-size:2.4rem;margin-bottom:12px}
 
 
 
-
 /* =========================
-   Navbar General
+   Navbar General (UPDATED)
 ========================= */
 header {
   width: 100%;
@@ -520,8 +520,17 @@ header {
   top: 0;
   left: 0;
   z-index: 1000;
-  transition: all 0.3s ease;
+
+  /* Blue navbar */
+  background: linear-gradient(
+    135deg,
+    #0b5ed7,
+    #0d6efd
+  );
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
+
 
 body {
   margin: 0;
@@ -537,27 +546,48 @@ body {
   padding: 1rem 2rem;
   transition: all 0.3s ease;
 }
-
 .logo {
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: #007bff;
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: #ffffff;
+  letter-spacing: 0.5px;
 }
 
-/* Nav Links */
-nav {
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
+.logo span {
+  color: #ffd43b; /* gold accent */
 }
 
+/* Nav links – clean blue harmony */
 nav a {
-  text-decoration: none;
-  color: #333;
+  color: #e7f1ff; /* soft white-blue */
   font-weight: 500;
-  position: relative;
-  transition: color 0.3s;
 }
+
+nav a:hover {
+  color: #ffffff;
+}
+
+/* Underline – subtle blue, not yellow */
+nav a::after {
+  background: #9ec5fe;
+}
+
+nav a.btn {
+  background: #ffffff;
+  color: #0d6efd;
+}
+
+
+nav a.btn:hover {
+  background: #ffca2c;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+nav a:hover {
+  color: #ffd43b;
+}
+
 
 nav a::after {
   content: '';
